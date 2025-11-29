@@ -26,6 +26,8 @@
 
 ---
 
+<img width="1200" height="475" alt="Orbyt.food Banner" src="https://i.ibb.co/jkzgDbRq/localhost-3000-1.png" />
+
 ## 🛠️ Tech Stack
 
 ### Core Technologies

@@ -51,7 +51,7 @@
 
 - **Node.js** (v18 or higher)
 - **npm** (v9 or higher)
-- **Google Gemini API Key** - Get one from [Google AI Studio](https://ai.google.dev/)
+- **Google Gemini API Key** 
 
 ### Installation
 

@@ -119,9 +119,7 @@ const Navbar = () => {
     )}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="relative w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-brand-cyan to-blue-600 rounded-lg shadow-lg shadow-brand-cyan/20">
-            <BrainCircuit className="w-5 h-5 text-white" />
-          </div>
+          
           <span className="text-xl font-bold text-white tracking-tight">
             Orbyt<span className="text-brand-cyan">.food</span>
           </span>

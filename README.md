@@ -1,5 +1,5 @@
 <div align="center">
-  <img width="1200" height="475" alt="Orbyt.food Banner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+  <img width="1200" height="475" alt="Orbyt.food Banner" src="https://i.ibb.co/ccPS8YTw/localhost-3000.png" />
   
   <h1>🍽️ Orbyt.food</h1>
   <p><strong>AI-Powered Nutritional Analysis from a Single Photo</strong></p>
@@ -153,8 +153,10 @@ Food/
 Create a `.env.local` file in the root directory:
 
 ```env
-API_KEY=your_google_gemini_api_key
+VITE_API_KEY=your_google_gemini_api_key
 ```
+
+> **Note:** Vite requires environment variables to be prefixed with `VITE_` to be accessible in client-side code.
 
 ## 🌐 Deployment
 
@@ -166,14 +168,50 @@ npm run build
 
 This creates an optimized production build in the `dist/` directory.
 
-### Deploy to Vercel
+### Deploy to Vercel (Recommended)
+
+#### Option 1: Using Vercel Dashboard (Easiest)
+
+1. **Push your code to GitHub**
+   ```bash
+   git add .
+   git commit -m "Deploy to Vercel"
+   git push origin main
+   ```
+
+2. **Import to Vercel**
+   - Go to [vercel.com](https://vercel.com) and sign in
+   - Click "Add New Project"
+   - Import your GitHub repository
+
+3. **Configure Environment Variables**
+   - In the project settings, go to "Environment Variables"
+   - Add a new variable:
+     - **Name:** `VITE_API_KEY`
+     - **Value:** Your Google Gemini API key
+     - **Environment:** Production, Preview, Development (select all)
+   - Click "Save"
+
+4. **Deploy**
+   - Click "Deploy"
+   - Your app will be live at `https://your-project.vercel.app`
+
+#### Option 2: Using Vercel CLI
 
 ```bash
 # Install Vercel CLI
 npm i -g vercel
 
+# Login
+vercel login
+
 # Deploy
 vercel
+
+# Add environment variable during deployment
+# When prompted, add: VITE_API_KEY=your_api_key
+
+# Or set it manually after deployment in the Vercel dashboard
 ```
 
 ### Deploy to Netlify

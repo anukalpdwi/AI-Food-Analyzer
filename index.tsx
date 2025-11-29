@@ -60,7 +60,7 @@ function cn(...inputs: ClassValue[]) {
 const db: any = null;
 
 // --- Gemini API Setup ---
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
 const MODEL_NAME = "gemini-2.5-flash-preview-09-2025";
 
 // --- Types ---
@@ -120,7 +120,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2 group cursor-pointer">
           <div className="relative w-8 h-8 flex items-center justify-center bg-gradient-to-tr from-brand-cyan to-blue-600 rounded-lg shadow-lg shadow-brand-cyan/20">
-             <BrainCircuit className="w-5 h-5 text-white" />
+            <BrainCircuit className="w-5 h-5 text-white" />
           </div>
           <span className="text-xl font-bold text-white tracking-tight">
             Orbyt<span className="text-brand-cyan">.food</span>
@@ -207,38 +207,38 @@ const HowItWorks = () => {
 
   return (
     <section id="how-it-works" className="py-24 relative border-t border-white/5">
-       <div className="max-w-7xl mx-auto px-6">
-          <SectionHeading 
-            badge="Process"
-            title="From plate to data in seconds."
-            subtitle="Complex nutritional analysis simplified into three effortless steps."
-          />
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16 relative">
-            {/* Connecting Line (Desktop) */}
-            <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-            
-            {steps.map((step, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.2 }}
-                className="relative flex flex-col items-center text-center group"
-              >
-                <div className="w-24 h-24 rounded-2xl bg-dark-800 border border-white/10 flex items-center justify-center mb-6 z-10 relative group-hover:scale-110 transition-transform duration-500 shadow-xl shadow-black/50">
-                   <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                   <step.icon className="w-10 h-10 text-brand-cyan" />
-                   <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center font-mono font-bold text-sm text-gray-400">
-                     {idx + 1}
-                   </div>
+      <div className="max-w-7xl mx-auto px-6">
+        <SectionHeading
+          badge="Process"
+          title="From plate to data in seconds."
+          subtitle="Complex nutritional analysis simplified into three effortless steps."
+        />
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mt-16 relative">
+          {/* Connecting Line (Desktop) */}
+          <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          {steps.map((step, idx) => (
+            <motion.div
+              key={idx}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.2 }}
+              className="relative flex flex-col items-center text-center group"
+            >
+              <div className="w-24 h-24 rounded-2xl bg-dark-800 border border-white/10 flex items-center justify-center mb-6 z-10 relative group-hover:scale-110 transition-transform duration-500 shadow-xl shadow-black/50">
+                <div className="absolute inset-0 bg-gradient-to-br from-brand-cyan/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
+                <step.icon className="w-10 h-10 text-brand-cyan" />
+                <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-dark-700 border border-white/10 flex items-center justify-center font-mono font-bold text-sm text-gray-400">
+                  {idx + 1}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
-                <p className="text-gray-400 leading-relaxed max-w-xs">{step.description}</p>
-              </motion.div>
-            ))}
-          </div>
-       </div>
+              </div>
+              <h3 className="text-xl font-bold text-white mb-3">{step.title}</h3>
+              <p className="text-gray-400 leading-relaxed max-w-xs">{step.description}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </section>
   )
 }
@@ -274,7 +274,7 @@ const Pricing = () => {
   return (
     <section id="pricing" className="py-24 relative bg-dark-900/50">
       <div className="max-w-7xl mx-auto px-6">
-        <SectionHeading 
+        <SectionHeading
           badge="Pricing"
           title="Simple, transparent pricing."
           subtitle="Choose the plan that best fits your nutritional tracking needs."
@@ -290,8 +290,8 @@ const Pricing = () => {
               whileHover={{ y: -8 }}
               className={cn(
                 "relative rounded-3xl p-8 border flex flex-col",
-                plan.highlight 
-                  ? "bg-white/5 border-brand-cyan/30 shadow-2xl shadow-brand-cyan/10" 
+                plan.highlight
+                  ? "bg-white/5 border-brand-cyan/30 shadow-2xl shadow-brand-cyan/10"
                   : "bg-transparent border-white/10 hover:bg-white/[0.02]"
               )}
             >
@@ -300,13 +300,13 @@ const Pricing = () => {
                   Most Popular
                 </div>
               )}
-              
+
               <h3 className="text-xl font-semibold text-white mb-2">{plan.name}</h3>
               <div className="flex items-baseline mb-8">
                 <span className="text-4xl font-bold text-white">{plan.price}</span>
                 <span className="text-gray-500 ml-2">{plan.period}</span>
               </div>
-              
+
               <ul className="space-y-4 mb-8 flex-1">
                 {plan.features.map((feat, i) => (
                   <li key={i} className="flex items-start gap-3 text-gray-300 text-sm">
@@ -315,11 +315,11 @@ const Pricing = () => {
                   </li>
                 ))}
               </ul>
-              
+
               <button className={cn(
                 "w-full py-4 rounded-xl font-bold transition-all text-sm",
-                plan.highlight 
-                  ? "bg-brand-cyan text-black hover:bg-cyan-300 shadow-lg shadow-brand-cyan/20" 
+                plan.highlight
+                  ? "bg-brand-cyan text-black hover:bg-cyan-300 shadow-lg shadow-brand-cyan/20"
                   : "bg-white/10 text-white hover:bg-white/20"
               )}>
                 {plan.cta}
@@ -346,7 +346,7 @@ const FAQ = () => {
         <h2 className="text-3xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h2>
         <div className="space-y-4">
           {faqs.map((item, idx) => (
-            <motion.div 
+            <motion.div
               key={idx}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -367,20 +367,20 @@ const FAQ = () => {
 const BentoGrid = () => (
   <section className="py-24 px-6 relative" id="features">
     <div className="max-w-7xl mx-auto">
-      <SectionHeading 
+      <SectionHeading
         badge="Features"
         title="Intelligence for your diet."
         subtitle="Leveraging AI to provide real-time, grounded nutritional analysis from a single photo."
       />
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Large Card */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -5 }}
           className="md:col-span-2 glass-card rounded-3xl p-8 md:p-12 relative overflow-hidden group"
         >
           <div className="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-100 transition-opacity duration-500">
-             <Scan className="w-32 h-32 text-brand-cyan" />
+            <Scan className="w-32 h-32 text-brand-cyan" />
           </div>
           <div className="relative z-10">
             <div className="w-12 h-12 bg-brand-cyan/10 rounded-xl flex items-center justify-center mb-6 text-brand-cyan">
@@ -395,13 +395,13 @@ const BentoGrid = () => (
         </motion.div>
 
         {/* Tall Card */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -5 }}
           className="glass-card rounded-3xl p-8 relative overflow-hidden group md:row-span-2 flex flex-col justify-end"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-0" />
           <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16" />
-          
+
           <div className="relative z-10">
             <div className="w-12 h-12 bg-purple-500/10 rounded-xl flex items-center justify-center mb-6 text-brand-purple">
               <Database className="w-6 h-6" />
@@ -414,7 +414,7 @@ const BentoGrid = () => (
         </motion.div>
 
         {/* Small Card 1 */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -5 }}
           className="glass-card rounded-3xl p-8 group relative overflow-hidden"
         >
@@ -426,7 +426,7 @@ const BentoGrid = () => (
         </motion.div>
 
         {/* Small Card 2 */}
-        <motion.div 
+        <motion.div
           whileHover={{ y: -5 }}
           className="glass-card rounded-3xl p-8 group relative overflow-hidden"
         >
@@ -547,7 +547,7 @@ const FoodAnalyzer = () => {
       const reader = new FileReader();
       reader.onloadend = () => {
         setImagePreview(reader.result as string);
-        setResult(null); 
+        setResult(null);
       };
       reader.readAsDataURL(selected);
     }
@@ -637,7 +637,7 @@ const FoodAnalyzer = () => {
 
       // --- Step 3: Persistence ---
       // Fallback for demo mode (add to local history state temporarily)
-      setHistory(prev => [{...newAnalysis, timestamp: { toDate: () => new Date() }}, ...prev]);
+      setHistory(prev => [{ ...newAnalysis, timestamp: { toDate: () => new Date() } }, ...prev]);
 
     } catch (error) {
       console.error("Analysis Failed", error);
@@ -677,7 +677,7 @@ const FoodAnalyzer = () => {
 
               {/* Decorative Grid */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-              
+
               {loading ? (
                 <div className="flex flex-col items-center gap-8 z-20">
                   <div className="relative w-24 h-24">
@@ -688,8 +688,8 @@ const FoodAnalyzer = () => {
                     </div>
                   </div>
                   <div className="text-center space-y-2">
-                     <h3 className="text-2xl font-medium text-white tracking-tight">Processing Vision Data</h3>
-                     <p className="text-brand-cyan font-mono text-sm animate-pulse">{loadingStep}</p>
+                    <h3 className="text-2xl font-medium text-white tracking-tight">Processing Vision Data</h3>
+                    <p className="text-brand-cyan font-mono text-sm animate-pulse">{loadingStep}</p>
                   </div>
                 </div>
               ) : imagePreview ? (
@@ -751,8 +751,8 @@ const FoodAnalyzer = () => {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-black/50 to-transparent p-10 flex flex-col justify-end">
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }} 
+                  <motion.div
+                    initial={{ y: 20, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ delay: 0.2 }}
                   >
@@ -794,28 +794,28 @@ const FoodAnalyzer = () => {
             <div className="lg:col-span-5 flex flex-col gap-6">
               {/* Chart Card */}
               <div className="glass-card rounded-[32px] p-8 flex flex-col items-center relative overflow-hidden h-[400px]">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-brand-cyan/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
+                <div className="absolute top-0 right-0 w-48 h-48 bg-brand-cyan/5 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none" />
                 <div className="w-full flex justify-between items-center mb-4 relative z-10">
                   <h3 className="text-lg font-medium text-gray-300">
                     Macro Breakdown
                   </h3>
                   <Badge className="bg-white/5 text-gray-400">Per Serving</Badge>
                 </div>
-                
+
                 <DonutChart macros={result.macros} />
-                
+
                 <div className="grid grid-cols-3 gap-2 w-full mt-4">
-                    {[
-                      { label: "Protein", val: result.macros.protein, color: "bg-indigo-400" },
-                      { label: "Fat", val: result.macros.fat, color: "bg-pink-400" },
-                      { label: "Carbs", val: result.macros.carbs, color: "bg-cyan-400" }
-                    ].map((m, i) => (
-                      <div key={i} className="text-center p-3 rounded-2xl bg-white/5 border border-white/5">
-                        <div className={cn("w-2 h-2 rounded-full mx-auto mb-2", m.color)} />
-                        <div className="text-[10px] text-gray-500 uppercase tracking-wider font-bold mb-1">{m.label}</div>
-                        <div className="text-white font-bold text-lg">{m.val}g</div>
-                      </div>
-                    ))}
+                  {[
+                    { label: "Protein", val: result.macros.protein, color: "bg-indigo-400" },
+                    { label: "Fat", val: result.macros.fat, color: "bg-pink-400" },
+                    { label: "Carbs", val: result.macros.carbs, color: "bg-cyan-400" }
+                  ].map((m, i) => (
+                    <div key={i} className="text-center p-3 rounded-2xl bg-white/5 border border-white/5">
+                      <div className={cn("w-2 h-2 rounded-full mx-auto mb-2", m.color)} />
+                      <div className="text-[10px] text-gray-500 uppercase tracking-wider font-bold mb-1">{m.label}</div>
+                      <div className="text-white font-bold text-lg">{m.val}g</div>
+                    </div>
+                  ))}
                 </div>
               </div>
 
@@ -847,7 +847,7 @@ const FoodAnalyzer = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* History Section */}
       <div className="mt-20 border-t border-white/5 pt-10">
         <div className="flex items-center justify-between mb-8 px-2">
@@ -857,7 +857,7 @@ const FoodAnalyzer = () => {
           </h3>
           <span className="text-xs text-gray-600 font-mono">LIVE SYNC</span>
         </div>
-        
+
         {history.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
             {history.map((item, idx) => (
@@ -903,21 +903,21 @@ const Footer = () => (
   <footer className="border-t border-white/5 bg-dark-900 pt-20 pb-10">
     <div className="max-w-7xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
       <div className="col-span-2">
-         <span className="text-2xl font-bold text-white tracking-tight mb-4 block">
-            Orbyt<span className="text-brand-cyan">.food</span>
-          </span>
-          <p className="text-gray-500 max-w-sm mb-6">
-            Pioneering the future of nutritional intelligence. 
-            We help you understand what you eat with military-grade precision.
-          </p>
-          <div className="flex gap-4">
-            <div className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
-              <Twitter className="w-5 h-5" />
-            </div>
-            <div className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
-              <Github className="w-5 h-5" />
-            </div>
+        <span className="text-2xl font-bold text-white tracking-tight mb-4 block">
+          Orbyt<span className="text-brand-cyan">.food</span>
+        </span>
+        <p className="text-gray-500 max-w-sm mb-6">
+          Pioneering the future of nutritional intelligence.
+          We help you understand what you eat with military-grade precision.
+        </p>
+        <div className="flex gap-4">
+          <div className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+            <Twitter className="w-5 h-5" />
           </div>
+          <div className="p-2 bg-white/5 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer">
+            <Github className="w-5 h-5" />
+          </div>
+        </div>
       </div>
       <div>
         <h4 className="text-white font-bold mb-4">Product</h4>
@@ -969,7 +969,7 @@ function App() {
             <Sparkles className="w-3 h-3" />
             <span>Now with Powerful AI</span>
           </motion.div>
-          
+
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -981,14 +981,14 @@ function App() {
               decoded instantly.
             </span>
           </motion.h1>
-          
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed mb-12"
           >
-            Transform any food photo into actionable nutritional data. 
+            Transform any food photo into actionable nutritional data.
             Powered by next-gen AI for athletes, biohackers, and you.
           </motion.p>
         </div>
@@ -1000,11 +1000,11 @@ function App() {
         <div className="w-full max-w-7xl border-y border-white/5 py-12 mb-20 overflow-hidden">
           <p className="text-center text-gray-500 text-sm font-medium mb-8 uppercase tracking-widest">Trusted by 10,000+ Biohackers</p>
           <div className="flex justify-between items-center opacity-40 grayscale hover:grayscale-0 transition-all duration-500 px-10 flex-wrap gap-8">
-             <span className="text-2xl font-bold">Acme<span className="font-light">Fitness</span></span>
-             <span className="text-2xl font-bold font-mono">PULSE</span>
-             <span className="text-2xl font-bold italic">Vitality.ai</span>
-             <span className="text-2xl font-extrabold tracking-tighter">OURA</span>
-             <span className="text-2xl font-serif">Equinox</span>
+            <span className="text-2xl font-bold">Acme<span className="font-light">Fitness</span></span>
+            <span className="text-2xl font-bold font-mono">PULSE</span>
+            <span className="text-2xl font-bold italic">Vitality.ai</span>
+            <span className="text-2xl font-extrabold tracking-tighter">OURA</span>
+            <span className="text-2xl font-serif">Equinox</span>
           </div>
         </div>
 
@@ -1023,16 +1023,16 @@ function App() {
         {/* CTA Section */}
         <div className="w-full max-w-7xl mx-auto py-32 px-6">
           <div className="glass-panel rounded-[3rem] p-12 md:p-24 text-center relative overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan/10 to-brand-purple/10" />
-             <div className="relative z-10">
-                <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Ready to optimize?</h2>
-                <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
-                  Join thousands of users who have upgraded their nutritional awareness. Start for free today.
-                </p>
-                <button className="bg-white text-black px-12 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-2xl shadow-white/20">
-                  Get Started for Free
-                </button>
-             </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-brand-cyan/10 to-brand-purple/10" />
+            <div className="relative z-10">
+              <h2 className="text-4xl md:text-6xl font-bold text-white mb-8 tracking-tight">Ready to optimize?</h2>
+              <p className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+                Join thousands of users who have upgraded their nutritional awareness. Start for free today.
+              </p>
+              <button className="bg-white text-black px-12 py-4 rounded-full text-lg font-bold hover:scale-105 transition-transform shadow-2xl shadow-white/20">
+                Get Started for Free
+              </button>
+            </div>
           </div>
         </div>
 
